@@ -17,7 +17,7 @@ Each lab prompt says the exact values to use, what to check, what never to do, t
 Explain this repo and how to run it. Point me to the files for the API, the web app, the tests and the Claude Code settings. Do not change anything, and do not open .env.
 ```
 
-## Module 3 — Claude Code
+## Module 2 — Claude Code
 
 ### Plan first (any change)
 ```text
@@ -44,7 +44,7 @@ Refactor <class> for readability without changing behaviour. Keep all tests pass
 Check the Definition of done in CLAUDE.md and confirm each item with evidence: which commands you ran and their results.
 ```
 
-## Module 2 — API warm-up
+## Module 3 — API warm-up
 
 ### Add a second tool
 ```text
