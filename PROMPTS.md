@@ -187,7 +187,7 @@ Expected: all tests pass, including the 5 extractor tests that failed at the sta
 
 ### Improve the score (6.4)
 ```text
-The API is running with my key in .env. Run dotnet run --project tools/ExtractScore -- --team "<your team>". Look at the wrong-field lines and find the field that is wrong most often. Suggest ONE change to the prompt or the schema and wait for my OK. Then stop the API, make the change, run dotnet test, start the API again and run the score again. Show both scores.
+The API is running with my key in .env. Run dotnet run --project tools/ExtractScore. Look at the wrong-field lines and find the field that is wrong most often. Suggest ONE change to the prompt or the schema and wait for my OK. Then stop the API, make the change, run dotnet test, start the API again and run the score again. Show both scores.
 Never: edit expected.json or the samples.
 Expected: 20/20 end Valid or NeedsReview; samples 08, 10 and 17 stay NeedsReview with their values as written.
 ```
