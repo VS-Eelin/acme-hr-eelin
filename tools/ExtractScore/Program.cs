@@ -1,14 +1,12 @@
 // Lab 6 scorer: sends the 20 sample PDF documents to the API and compares with seed/documents/expected.json.
 // Cost: one run is up to 40 Claude calls (20 PDFs x up to 2 attempts); each PDF page is also read as an image.
-// Usage: dotnet run --project tools/ExtractScore -- --team "Team Name" [--api http://localhost:5080]
-// Optional: set LEADERBOARD_URL to post { team, score } to the trainer's board.
+// Usage: dotnet run --project tools/ExtractScore [-- --api http://localhost:5080]
 using System.Globalization;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text.Json;
 
 string Arg(string name, string def) { var i = Array.IndexOf(args, name); return i >= 0 && i + 1 < args.Length ? args[i + 1] : def; }
-var team = Arg("--team", "unnamed");
 var api = Arg("--api", Environment.GetEnvironmentVariable("ACME_API_URL") ?? "http://localhost:5080");
 var dir = Path.Combine(AppContext.BaseDirectory, "documents");
 var expected = JsonDocument.Parse(File.ReadAllText(Path.Combine(dir, "expected.json"))).RootElement;
@@ -64,13 +62,7 @@ Console.WriteLine();
 Console.WriteLine($"Handled (Valid or NeedsReview): {handled}/{docs}");
 Console.WriteLine($"Status as expected:             {statusRight}/{docs}");
 Console.WriteLine($"Field accuracy:                 {accuracy:F1}%");
-Console.WriteLine($"SCORE for {team}: {score.ToString(CultureInfo.InvariantCulture)}");
-
-if (Environment.GetEnvironmentVariable("LEADERBOARD_URL") is { Length: > 0 } board)
-{
-    try { await http.PostAsJsonAsync(board, new { team, score }); Console.WriteLine("Posted to leaderboard."); }
-    catch (Exception ex) { Console.WriteLine($"Leaderboard post failed: {ex.Message}"); }
-}
+Console.WriteLine($"SCORE: {score.ToString(CultureInfo.InvariantCulture)}");
 
 static bool Same(JsonElement exp, JsonElement got) =>
     exp.ValueKind == JsonValueKind.Number && got.ValueKind == JsonValueKind.Number
