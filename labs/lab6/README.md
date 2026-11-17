@@ -15,7 +15,7 @@
 
 6.2 Read `docs/feature-spec-documents.md`, `src/Api/Documents/DocumentExtractor.cs` and `DocumentValidator.cs`. Switch to plan mode, paste **Finish the extractor**, review the plan, then let it build.
 
-6.3 Start the API, then run `dotnet run --project tools/ExtractScore -- --team "<your team>"`. Each wrong field is printed by name, e.g. `wrong date: expected 2026-10-03, got 2026-03-10`.
+6.3 Start the API, then run `dotnet run --project tools/ExtractScore`. Each wrong field is printed by name, e.g. `wrong date: expected 2026-10-03, got 2026-03-10`.
 
 6.4 Paste **Improve the score** once. The prompt is compiled into the API, so the order is: stop the API, edit, run the tests, start the API, run the score.
 
@@ -28,7 +28,6 @@
 ## Done when
 - [ ] 20/20 documents end as `Valid` or `NeedsReview` (no errors)
 - [ ] Samples 08, 10 and 17 end in `NeedsReview` with their values as written, not "fixed" by Claude
-- [ ] Your score is on the leaderboard
 - [ ] It works on the live site
 
 ## Stuck?
