@@ -33,6 +33,6 @@ Employees submit medical certificates (MC) and expense claims. Claude reads the 
 - PDFs cost more tokens than plain text: every page is also read as an image.
 
 ## Scoring
-`dotnet run --project tools/ExtractScore -- --team "<team>"` sends the 20 sample PDFs in `seed/documents/` (some text PDFs, some scans) to `POST /documents/extract` and compares with `expected.json`. Score = 70% field accuracy + 30% correct status.
+`dotnet run --project tools/ExtractScore` sends the 20 sample PDFs in `seed/documents/` (some text PDFs, some scans) to `POST /documents/extract` and compares with `expected.json`. Score = 70% field accuracy + 30% correct status.
 Samples 08, 10 and 17 are wrong on paper and should end in `NeedsReview`. Samples 19 and 20 are not MCs or claims.
 The scorer prints each wrong field, for example `date: expected 2026-10-03, got 2026-03-10`.
